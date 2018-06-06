@@ -1,7 +1,6 @@
 require 'sidekiq/api'
 require 'sidekiq/web'
 require 'sidekiq/monitor/web'
-require 'json'
 
 module Sidekiq
   module Monitor
@@ -30,7 +29,20 @@ module Sidekiq
         end
       end
       def sidekiq_stats
-        Sidekiq::Stats.new.to_json
+        stat = Sidekiq::Stats.new
+
+        {
+          processed:  stat.processed,
+          failed:     stat.failed,
+          scheduled_size: stat.scheduled_size,
+          retry_size: stat.retry_size,
+          dead_size: stat.dead_size,
+          processes_size: stat.processes_size,
+          default_queue_latency: stat.default_queue_latency,
+          workers_size: stat.workers_size,
+          enqueued: stat.enqueued
+        }
+
       end
     end
   end

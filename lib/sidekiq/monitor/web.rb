@@ -9,7 +9,7 @@ module Sidekiq
 
           data = {
             queues:    monitor_stats.queue_metrics,
-            processes: monitor_stats.process_metrics
+            processes: monitor_stats.process_metrics,
             stats: monitor_stats.sidekiq_stats
           }
 

@@ -28,6 +28,9 @@ module Sidekiq
           }
         end
       end
+      def sidekiq_stats
+        Sidekiq::Stats.new
+      end
     end
   end
 end

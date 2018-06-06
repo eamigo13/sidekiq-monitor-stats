@@ -29,7 +29,7 @@ module Sidekiq
         end
       end
       def sidekiq_stats
-        Sidekiq::Stats.new
+        Sidekiq::Stats.new.to_json
       end
     end
   end
